@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Denied | TSM Digest{% endblock %}</title>
+
+{% block description %}Invalid Login Credentials{% endblock %}"
+
+
+{% block body %}
+    	<!-- Jumbotron -->
+    	<div class="jumbotron">
+    		<p class="lead">Sorry, you do not have access to this content.<br/>You are currently logged in as: {{user}}</p>
+    		<a class="btn btn-large btn-success" href="{{login_url}}">{{login_text}}</a>
+    	</div>
+    	
+{% endblock %}
+    	
+    	

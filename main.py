@@ -21,6 +21,10 @@ from google.appengine.api import users
 
 JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__),'templates')))
 
+approved_user_list=['jeffreyleecooper@gmail.com',
+                    'test@example.com',
+                    ]
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         if users.get_current_user():
@@ -43,64 +47,98 @@ class MainHandler(webapp2.RequestHandler):
         
 class TimeHandler(webapp2.RequestHandler):
     def get(self):
-        if users.get_current_user():
+        if users.get_current_user().email().lower() not in approved_user_list:
             url = users.create_logout_url('/')
             url_linktext='Logout'
             current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Time',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            
+            template = JINJA_ENVIRONMENT.get_template('denied.html')
+            self.response.write(template.render(template_values))  
+            
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-            current_user = None
-
-        template_values = {
-            'active_nav':'Time',
-            'login_url':url,
-            'login_text':url_linktext,
-            'user':current_user
-        }
         
-        template = JINJA_ENVIRONMENT.get_template('time.html')
-        self.response.write(template.render(template_values))
+            url = users.create_logout_url('/')
+            url_linktext='Logout'
+            current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Time',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            
+            template = JINJA_ENVIRONMENT.get_template('time.html')
+            self.response.write(template.render(template_values))
         
 class ClientHandler(webapp2.RequestHandler):
     def get(self):
-        if users.get_current_user():
+        if users.get_current_user().email().lower() not in approved_user_list:
             url = users.create_logout_url('/')
             url_linktext='Logout'
             current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Clients',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            
+            template = JINJA_ENVIRONMENT.get_template('denied.html')
+            self.response.write(template.render(template_values))  
+            
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-            current_user = None
-
-        template_values = {
-            'active_nav':'Clients',
-            'login_url':url,
-            'login_text':url_linktext,
-            'user':current_user
-        }
-        template = JINJA_ENVIRONMENT.get_template('clients.html')
-        self.response.write(template.render(template_values))
+            url = users.create_logout_url('/')
+            url_linktext='Logout'
+            current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Clients',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            template = JINJA_ENVIRONMENT.get_template('clients.html')
+            self.response.write(template.render(template_values))
         
 class ShipmateHandler(webapp2.RequestHandler):
     def get(self):
-        if users.get_current_user():
+        if users.get_current_user().email().lower() not in approved_user_list:
             url = users.create_logout_url('/')
             url_linktext='Logout'
             current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Shipmates',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            
+            template = JINJA_ENVIRONMENT.get_template('denied.html')
+            self.response.write(template.render(template_values))  
+            
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-            current_user = None
-
-        template_values = {
-            'active_nav':'Shipmates',
-            'login_url':url,
-            'login_text':url_linktext,
-            'user':current_user
-        }
-        template = JINJA_ENVIRONMENT.get_template('shipmates.html')
-        self.response.write(template.render(template_values))
+            url = users.create_logout_url('/')
+            url_linktext='Logout'
+            current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Shipmates',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            template = JINJA_ENVIRONMENT.get_template('shipmates.html')
+            self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),

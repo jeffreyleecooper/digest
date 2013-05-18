@@ -23,12 +23,15 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico">
+    {% block head_code %}
+    {% endblock %}
+    
   </head>
   
   <body>
     <div class="container jetstrap-highlighted">
     	<div class="masthead">
-    		<h3 class="muted">Three Ships Digest{% if user %} - {{user}}{% endif %}</h3>
+    		<h3 class="muted">Three Ships Digest</h3>
     
     		
     		<div class="navbar">
@@ -67,7 +70,7 @@
     	
     	<div class="footer">
     	<hr>
-    		Designed and Programmed by <a href="http://www.jeffreyleecooper.com">Jeffrey Cooper</a> | <a href="mailto:jeff.cooper@threeshipsmedia.com">Contact</a>
+    		{% if user %}<p class="leftfloat" >You are currently logged in as {{user}}.</p>{% endif %}<p class="rightfloat">Designed and Programmed by <a href="http://www.jeffreyleecooper.com" target="_blank">Jeffrey Cooper</a> | <a href="mailto:jeff.cooper@threeshipsmedia.com">Contact</a></p>
     	</div>
     </div>
     <!-- /container -->
@@ -88,8 +91,11 @@
         margin: 60px 0;
       }
       
-      .footer {
-      text-align: right;
+      .leftfloat {
+      float: left;
+      }
+      .rightfloat {
+      float: right;
       }
       
       /* Main marketing message and sign up button */
