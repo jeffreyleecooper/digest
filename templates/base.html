@@ -28,28 +28,27 @@
   <body>
     <div class="container jetstrap-highlighted">
     	<div class="masthead">
-    		<h3 class="muted">
-    			Three Ships Media - Morning Digest
-    			<br>
-    		</h3>
+    		<h3 class="muted">Three Ships Digest{% if user %} - {{user}}{% endif %}</h3>
+    
+    		
     		<div class="navbar">
     			<div class="navbar-inner">
     				<div class="container">
     					<ul class="nav">
-    						<li class="">
-    							<a class="" href="#">Welcome</a>
+    						<li {% if active_nav == "Main" %} class="active"{% endif %}>
+    							<a href="/">Welcome</a>
+    						</li>
+    						<li {% if active_nav == "Time" %} class="active"{% endif %}>
+    							<a href="/time">Time Allocation</a>
+    						</li>
+    						<li {% if active_nav == "Clients" %} class="active"{% endif %}>
+    							<a href="/clients">Clients</a>
+    						</li>
+    						<li {% if active_nav == "Shipmates" %} class="active"{% endif %}>
+    							<a href="/shipmates">Shipmates</a>
     						</li>
     						<li>
-    							<a class="" href="#">Time Allocation</a>
-    						</li>
-    						<li class="">
-    							<a class="" href="#">Clients</a>
-    						</li>
-    						<li>
-    							<a class="" href="#">Shipmates</a>
-    						</li>
-    						<li class="">
-    							<a class="" href="#">Login</a>
+    							<a href="{{login_url}}">{{login_text}}</a>
     						</li>
     					</ul>
     				</div>
@@ -60,9 +59,8 @@
     	{% block body %}
     	<!-- Jumbotron -->
     	<div class="jumbotron">
-    		
-    		<p class="lead">Welcome to the TSM Morning Digest.&nbsp; This site is designed to summarize Asana and Harvest data for discussion during the Project Management Meeting.<br></p>
-    		<a class="btn btn-large btn-success" href="#">Login</a>
+    		<p class="lead">Welcome to the Three Ships Digest. This site is designed to summarize Asana and Harvest data for discussion during the Project Management Meeting.</p>
+    		<a class="btn btn-large btn-success" href="{{login_url}}">{{login_text}}</a>
     	</div>
     	
     	{% endblock %}
