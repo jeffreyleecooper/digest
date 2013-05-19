@@ -49,7 +49,7 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    .range(["#4a4b50", "#58bd5b", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 var xAxis = d3.svg.axis()
     .scale(x0)
@@ -66,7 +66,7 @@ var svg = d3.select("div.d3space").append("svg")
 .append("g")
 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("/assets/data/data.csv", function(error, data) {
+d3.csv("/assets/data/data2.csv", function(error, data) {
 var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
 
 data.forEach(function(d) {
@@ -90,7 +90,7 @@ svg.append("g")
 .attr("y", 6)
 .attr("dy", ".71em")
 .style("text-anchor", "end")
-.text("Population");
+.text("Hours");
 
 var state = svg.selectAll(".state")
 .data(data)
