@@ -140,9 +140,41 @@ class ShipmateHandler(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('shipmates.html')
             self.response.write(template.render(template_values))
 
+class TestHandler(webapp2.RequestHandler):
+    def get(self):
+        if users.get_current_user().email().lower() not in approved_user_list:
+            url = users.create_logout_url('/')
+            url_linktext='Logout'
+            current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'Shipmates',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            
+            template = JINJA_ENVIRONMENT.get_template('denied.html')
+            self.response.write(template.render(template_values))  
+            
+        else:
+            url = users.create_logout_url('/')
+            url_linktext='Logout'
+            current_user=users.get_current_user().email()
+    
+            template_values = {
+                'active_nav':'',
+                'login_url':url,
+                'login_text':url_linktext,
+                'user':current_user
+            }
+            template = JINJA_ENVIRONMENT.get_template('test.html')
+            self.response.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/time' , TimeHandler),
     ('/clients' , ClientHandler),
     ('/shipmates' , ShipmateHandler),
+    ('/test', TestHandler)
 ], debug=True)

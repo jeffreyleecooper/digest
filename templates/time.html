@@ -5,7 +5,7 @@
 {% block description %}Review Client Time{% endblock %}"
 
  {% block head_code %}
- <style>
+<style>
 
 .axis path,
 .axis line {
@@ -30,7 +30,9 @@ text-align:center;
 
 {% block body %}
             <div class="frame">
-    		<div class="d3space"><strong>Time Summary</strong></div>
+    		<strong>Time Summary</strong><br/>
+    		<a href="" >Past 4 Weeks</a> | <a href="">Past 8 Weeks</a> | <a href="">Past 12 Weeks</a>
+    		<div class="d3space"></div>
     		<a class="btn btn-large btn-success" href="{{login_url}}">{{login_text}}</a></div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -129,6 +131,8 @@ legend.append("text")
 });
 
 </script>
+
+
 {% endblock %}
     	
     	

@@ -23,59 +23,8 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico">
-    {% block head_code %}
-    {% endblock %}
     
-  </head>
-  
-  <body>
-    <div class="container jetstrap-highlighted">
-    	<div class="masthead">
-    		<h3 class="muted">Three Ships Digest</h3>
-    
-    		
-    		<div class="navbar">
-    			<div class="navbar-inner">
-    				<div class="container">
-    					<ul class="nav">
-    						<li {% if active_nav == "Main" %} class="active"{% endif %}>
-    							<a href="/">Welcome</a>
-    						</li>
-    						<li {% if active_nav == "Time" %} class="active"{% endif %}>
-    							<a href="/time">Time Allocation</a>
-    						</li>
-    						<li {% if active_nav == "Clients" %} class="active"{% endif %}>
-    							<a href="/clients">Clients</a>
-    						</li>
-    						<li {% if active_nav == "Shipmates" %} class="active"{% endif %}>
-    							<a href="/shipmates">Shipmates</a>
-    						</li>
-    						<li>
-    							<a href="{{login_url}}">{{login_text}}</a>
-    						</li>
-    					</ul>
-    				</div>
-    			</div>
-    		</div>
-    		<!-- /.navbar -->
-    	</div>
-    	{% block body %}
-    	<!-- Jumbotron -->
-    	<div class="jumbotron">
-    		<p class="lead">Welcome to the Three Ships Digest. This site is designed to summarize Asana and Harvest data for discussion during the Project Management Meeting.</p>
-    		<a class="btn btn-large btn-success" href="{{login_url}}">{{login_text}}</a>
-    	</div>
-    	
-    	{% endblock %}
-    	
-    	<div class="footer">
-    	<hr>
-    		{% if user %}<p class="leftfloat" >You are currently logged in as {{user}}.</p>{% endif %}<p class="rightfloat">Designed and Programmed by <a href="http://www.jeffreyleecooper.com" target="_blank">Jeffrey Cooper</a> | <a href="mailto:jeff.cooper@threeshipsmedia.com">Contact</a></p>
-    	</div>
-    </div>
-    <!-- /container -->
-
-    <style>
+        <style>
       
       body {
         padding-top: 20px;
@@ -157,6 +106,60 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    
+    {% block head_code %}
+    {% endblock %}
+    
+  </head>
+  
+  <body>
+    <div class="container jetstrap-highlighted">
+    	<div class="masthead">
+    		<h3 class="muted">Three Ships Digest</h3>
+    
+    		
+    		<div class="navbar">
+    			<div class="navbar-inner">
+    				<div class="container">
+    					<ul class="nav">
+    						<li {% if active_nav == "Main" %} class="active"{% endif %}>
+    							<a href="/">Welcome</a>
+    						</li>
+    						<li {% if active_nav == "Time" %} class="active"{% endif %}>
+    							<a href="/time">Time Allocation</a>
+    						</li>
+    						<li {% if active_nav == "Clients" %} class="active"{% endif %}>
+    							<a href="/clients">Clients</a>
+    						</li>
+    						<li {% if active_nav == "Shipmates" %} class="active"{% endif %}>
+    							<a href="/shipmates">Shipmates</a>
+    						</li>
+    						<li>
+    							<a href="{{login_url}}">{{login_text}}</a>
+    						</li>
+    					</ul>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- /.navbar -->
+    	</div>
+    	{% block body %}
+    	<!-- Jumbotron -->
+    	<div class="jumbotron">
+    		<p class="lead">Welcome to the Three Ships Digest. This site is designed to summarize Asana and Harvest data for discussion during the Project Management Meeting.</p>
+    		<a class="btn btn-large btn-success" href="{{login_url}}">{{login_text}}</a>
+    	</div>
+    	
+    	{% endblock %}
+    	
+    	<div class="footer">
+    	<hr>
+    		{% if user %}<p class="leftfloat" >You are currently logged in as {{user}}.</p>{% endif %}<p class="rightfloat">Designed and Programmed by <a href="http://www.jeffreyleecooper.com" target="_blank">Jeffrey Cooper</a> | <a href="mailto:jeff.cooper@threeshipsmedia.com">Contact</a></p>
+    	</div>
+    </div>
+    <!-- /container -->
+
+
 
   </body>
 </html>

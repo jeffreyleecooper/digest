@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Test | TSM Digest{% endblock %}</title>
+
+{% block description %}Test{% endblock %}"
+
+
+ {% block head_code %}
+<style>
+#jco_test {
+    float: center;
+    width: 280px;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-left: 1px solid #999;
+}
+}
+#jco_test li a {
+    display: block;
+    padding: 10px 15px;
+background: #ccc;  border-top: 1px solid #eee;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
+    color: #000;
+}
+#jco_test li a:hover, #jco_test li a.active {
+    background: #999;
+    color: #fff;
+}
+#jco_test li ul {
+    display: none; // used to hide sub-menus
+}
+#jco_test li ul li a {
+    padding: 10px 25px;
+    background: #ececec;
+    border-bottom: 1px dotted #ccc;
+}
+</style>
+<script>
+$(document).ready(function () {
+	  $('#jco_test > li > a').click(function(){
+	    if ($(this).attr('class') != 'active'){
+	      $('#jco_test li ul').slideUp();
+	      $(this).next().slideToggle();
+	      $('#jco_test li a').removeClass('active');
+	      $(this).addClass('active');
+	    }
+	  });
+	});
+</script>
+{% endblock %}
+
+
+{% block body %}
+<div>
+<ul id="jco_test">
+  <li><a href="#">Client A</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Client B</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Client C</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Client D</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Client E</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Client F</a>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+      <li><a href="#">Project 3</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+{% endblock %}
+    	
+    	
